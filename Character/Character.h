@@ -19,7 +19,7 @@ protected:
     int Atk;
 
 public:
-    void Attack(int NewAtk);
+    void Attack(ACharacter* character);
 
     void TakeDamage(int DamageAmount);
 

@@ -12,9 +12,7 @@ int main()
 
     while (!Player->bIsDead()&& !Monster->bIsDead())
     {
-        Player->Attack(Player->GetAtk());
-
-        Monster->TakeDamage(Player->GetAtk());
+        Player->Attack(Monster);
 
         if (Monster->bIsDead())
         {
@@ -25,9 +23,7 @@ int main()
         Sleep(500);
 
 
-        Monster->Attack(Monster->GetAtk());
-
-        Player->TakeDamage(Monster->GetAtk());
+        Monster->Attack(Player);
 
         if (Player->bIsDead())
         {
