@@ -1,14 +1,44 @@
 ﻿#include "Character/Character.h"
+#include <Windows.h>
 
 int main()
 {
-    ACharacter* MyChar = new ACharacter();
+    ACharacter* Player = new ACharacter("나의 용사", 200, 15);
+    ACharacter* Monster = new ACharacter("무서운 오크", 100, 10);
 
-    MyChar->Attack();
+    cout << "===  데스매치 시작!  ===" << endl;
+    Sleep(1000);
 
-    MyChar->TakeDamage(30);
 
-    delete MyChar;
+    while (!Player->bIsDead()&& !Monster->bIsDead())
+    {
+        Player->Attack(Player->GetAtk());
 
+        Monster->TakeDamage(Player->GetAtk());
+
+        if (Monster->bIsDead())
+        {
+            cout << "몬스터가 쓰러졌습니다! 승리!" << endl;
+            break;
+        }
+
+        Sleep(500);
+
+
+        Monster->Attack(Monster->GetAtk());
+
+        Player->TakeDamage(Monster->GetAtk());
+
+        if (Player->bIsDead())
+        {
+            cout << "플레이어가 쓰러졌습니다... 패배..." << endl;
+            break;
+        }
+
+        Sleep(1000);
+    }
+
+    delete Player;
+    delete Monster;
     return 0;
 }

@@ -9,7 +9,8 @@ using namespace std;
 class ACharacter
 {
 public:
-    ACharacter();
+    ACharacter(string NewName, int NewHp, int NewAtk);
+
     ~ACharacter();
 
 protected:
@@ -18,8 +19,14 @@ protected:
     int Atk;
 
 public:
-    void Attack();
+    void Attack(int NewAtk);
 
     void TakeDamage(int DamageAmount);
+
+    int GetHp();
+
+    bool bIsDead();
+
+    int GetAtk();
 
 };
