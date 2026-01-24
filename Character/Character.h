@@ -27,6 +27,7 @@ public:
 
     int GetHp();
 
+    //bIsDead < b는 변수에만 해당되는 코딩스타일 입니다.
     bool bIsDead();
 
     int GetAtk();

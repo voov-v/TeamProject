@@ -34,12 +34,14 @@ int GetRandomInt()
 
 void ACharacter::Attack(ACharacter* Target)
 {
+    //변수명 코딩 스타일 PascalCase
     int rand = GetRandomInt();
 
     cout << Name << "가 공격합니다." << endl;
     
     if (rand < Critical)
     {
+        //static_cast<> 캐스팅 찾아보세요.
         int CriticalAtk = Atk * 1.5;
         Target->TakeDamage(CriticalAtk);
     }
@@ -47,12 +49,16 @@ void ACharacter::Attack(ACharacter* Target)
     {
         Target->TakeDamage(Atk);
     }
+    
+    //if else 바깥에서 takedamage 한번만 호출 가능합니다.
+    //지역변수 하나를 정의해서 거기에 계산을 하는 방식.
 }
 
 void ACharacter::TakeDamage(int DamageAmount)
 {
     int Damage = DamageAmount - Def;
 
+    //{ } if문 사용시에 꼭 넣읍시다.
     if (Damage < 0)
         Damage = 0;
 
@@ -75,7 +81,7 @@ bool ACharacter::bIsDead()
     if (Hp <= 0)
     {
         return true;
-    } 
+    } //else 제거 가능합니다.
     else
     {
         return false;
