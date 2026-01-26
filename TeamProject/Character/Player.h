@@ -8,6 +8,12 @@ public:
 	APlayer(const string& NewName, const FUnitStat& NewStat);
 	~APlayer() override;
 	
-	//변수: 레벨 경험치
+protected:
+	int Level;
+	int Exp;
+	
+public:
+	void LevelUp();
+	bool UseItem();
 	//함수: 레벨업, 아이템사용
 };
