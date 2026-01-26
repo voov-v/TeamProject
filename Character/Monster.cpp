@@ -1,6 +1,6 @@
-﻿#include "Player.h"
+﻿#include "Monster.h"
 
-APlayer::APlayer(const string NewName, const FUnitStat& NewStat)
+AMonster::AMonster(const string& NewName, FUnitStat NewStat)
 {
     Name = NewName;
     Stat = NewStat;
@@ -8,7 +8,6 @@ APlayer::APlayer(const string NewName, const FUnitStat& NewStat)
     cout << "APlayer 생성됨: " << Name << " (HP: " << Stat.Hp << ")" << endl;
 }
 
-APlayer::~APlayer()
+AMonster::~AMonster()
 {
 }
-

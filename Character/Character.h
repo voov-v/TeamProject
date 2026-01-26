@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string> 
+#include <random>
 
 using namespace std;
 
@@ -17,7 +18,7 @@ class ACharacter
 {
 public:
     ACharacter();
-    /*ACharacter(const string NewName, const FUnitStat& NewStat);*/
+    ACharacter(const string& NewName, const FUnitStat& NewStat);
     ~ACharacter();
 
 protected:
@@ -25,14 +26,16 @@ protected:
     FUnitStat Stat;
 
 public:
-    void Attack(ACharacter* Target);
+    int GetHp() { return Stat.Hp; }
+    bool IsDead() { return Stat.Hp <= 0; }
+    int GetAtk() { return Stat.Atk; }
 
+    void Attack(ACharacter* Target);
     void TakeDamage(int DamageAmount);
 
-    int GetHp();
 
-    bool IsDead();
 
-    int GetAtk();
+private:
+    int GetRandomInt();
 
 };

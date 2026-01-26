@@ -1,10 +1,12 @@
 ﻿#include "Character/Character.h"
+#include "Character/Player.h"
+#include "Character/Monster.h"
 #include <Windows.h>
 
 int main()
 {
-    ACharacter* Player = new ACharacter("나의 용사", { 200, 15, 7, 10 });
-    ACharacter* Monster = new ACharacter("무서운 오크", { 100, 10, 5, 10 });
+    APlayer* Player = new APlayer("나의 용사", { 200, 15, 7, 10 });
+    AMonster* Monster = new AMonster("무서운 오크", { 100, 10, 5, 10 });
 
     cout << "===  데스매치 시작!  ===" << endl;
     Sleep(1000);
