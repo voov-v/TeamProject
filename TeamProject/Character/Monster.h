@@ -2,15 +2,10 @@
 
 #include "Character.h"
 
-class AMonster : ACharacter 
+class AMonster : public ACharacter 
 {
 public:
-    AMonster(const string& NewName, FUnitStat NewStat);
-    ~AMonster();
-
-protected:
-    string name;
-    FUnitStat Stat;
-
+    AMonster(const string& NewName, const FUnitStat& NewStat);
+    ~AMonster() override;
 };
 

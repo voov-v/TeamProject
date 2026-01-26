@@ -1,7 +1,5 @@
 ﻿#include "Character.h"
 
-ACharacter::ACharacter(){}
-
 ACharacter::ACharacter(const string& NewName, const FUnitStat& NewStat)
 {
     Name = NewName;

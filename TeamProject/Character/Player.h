@@ -2,13 +2,12 @@
 
 #include "Character.h"
 
-class APlayer : ACharacter 
+class APlayer : public ACharacter
 {
 public:
-    APlayer(const string name, const FUnitStat& NewStat);
-    ~APlayer();
-
-protected:
-    string name;
-    FUnitStat Stat;
+	APlayer(const string& NewName, const FUnitStat& NewStat);
+	~APlayer() override;
+	
+	//변수: 레벨 경험치
+	//함수: 레벨업, 아이템사용
 };

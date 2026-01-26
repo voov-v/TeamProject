@@ -1,11 +1,9 @@
 ﻿#include "Player.h"
 
-APlayer::APlayer(const string NewName, const FUnitStat& NewStat)
+APlayer::APlayer(const string& NewName, const FUnitStat& NewStat)
+    : ACharacter(NewName, NewStat)
 {
-    Name = NewName;
-    Stat = NewStat;
-
-    cout << "APlayer 생성됨: " << Name << " (HP: " << Stat.Hp << ")" << endl;
+    
 }
 
 APlayer::~APlayer()

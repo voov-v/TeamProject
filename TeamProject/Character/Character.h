@@ -17,9 +17,8 @@ struct FUnitStat
 class ACharacter
 {
 public:
-    ACharacter();
     ACharacter(const string& NewName, const FUnitStat& NewStat);
-    ~ACharacter();
+    virtual ~ACharacter();
 
 protected:
     string Name;
@@ -32,8 +31,6 @@ public:
 
     void Attack(ACharacter* Target);
     void TakeDamage(int DamageAmount);
-
-
 
 private:
     int GetRandomInt();
