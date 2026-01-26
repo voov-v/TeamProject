@@ -2,7 +2,15 @@
 
 #include "Character.h"
 
-class APlayer
+class APlayer : ACharacter 
 {
+public:
+    APlayer(const string name, const FUnitStat& NewStat);
+    ~APlayer();
+
+protected:
+    string name;
+    FUnitStat Stat;
+
 };
 

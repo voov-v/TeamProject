@@ -1,13 +1,13 @@
 ﻿#include "Character.h"
 #include <random>
 
-ACharacter::ACharacter(const string NewName, const FUnitStat& NewStat)
+ACharacter::ACharacter(/*const string NewName, const FUnitStat& NewStat*/)
 {
-    Name = NewName;
+    /*Name = NewName;
     Stat = NewStat;
 
-    cout << "ACharacter 생성됨: " << Name << " (HP: " << Stat.Hp << ")" << endl;
-}
+    cout << "ACharacter 생성됨: " << Name << " (HP: " << Stat.Hp << ")" << endl;*/
+}   
 
 ACharacter::~ACharacter()
 {
