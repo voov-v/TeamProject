@@ -11,5 +11,4 @@ public:
 protected:
     string name;
     FUnitStat Stat;
-
 };

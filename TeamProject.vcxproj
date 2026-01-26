@@ -126,6 +126,7 @@
     <ClCompile Include="Character\Character.cpp" />
     <ClCompile Include="Character\Player.cpp" />
     <ClCompile Include="Character\Monster.cpp" />
+    <ClCompile Include="TeamProject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character\Character.h" />
