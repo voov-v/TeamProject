@@ -12,14 +12,8 @@ APlayer::~APlayer()
 
 void APlayer::LevelUp()
 {
-    if (Exp >= 100)
-    {
-        Level++;
-        Exp -= 100;
-    }
 }
 
-bool APlayer::UseItem()
-{
-    return true;
-}
+//bool APlayer::UseItem()
+//{
+//}

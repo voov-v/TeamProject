@@ -14,6 +14,5 @@ protected:
 	
 public:
 	void LevelUp();
-	bool UseItem();
-	//함수: 레벨업, 아이템사용
+	/*bool UseItem();*/
 };
