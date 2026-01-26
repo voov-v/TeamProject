@@ -5,7 +5,7 @@
 class APlayer : public ACharacter
 {
 public:
-	APlayer(const string& NewName, const FUnitStat& NewStat);
+	APlayer(const string& NewName, const FUnitStat& NewStat, int NewLevel, int NewExp);
 	~APlayer() override;
 	
 protected:
