@@ -5,7 +5,7 @@
 class APlayer : public ACharacter
 {
 public:
-	APlayer(const string& NewName, const FUnitStat& NewStat, int NewLevel, int NewExp);
+	APlayer(const string& NewName, const FUnitStat& NewStat);
 	~APlayer() override;
 	
 protected:
@@ -14,5 +14,5 @@ protected:
 	
 public:
 	void LevelUp();
-	/*bool UseItem();*/
+	bool UseItem();
 };

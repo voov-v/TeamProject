@@ -1,10 +1,10 @@
 ﻿#include "Player.h"
 
-APlayer::APlayer(const string& NewName, const FUnitStat& NewStat, int NewLevel, int NewExp)
+APlayer::APlayer(const string& NewName, const FUnitStat& NewStat)
     : ACharacter(NewName, NewStat)
 {
-    Level = NewLevel;
-    Exp = NewExp;
+    Level = 1;
+    Exp = 0;
 }
 
 APlayer::~APlayer()
@@ -15,6 +15,7 @@ void APlayer::LevelUp()
 {
 }
 
-//bool APlayer::UseItem()
-//{
-//}
+bool APlayer::UseItem()
+{
+    return true;
+}
