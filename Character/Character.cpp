@@ -1,15 +1,12 @@
 ﻿#include "Character.h"
 #include <random>
 
-ACharacter::ACharacter(string NewName, int NewHp, int NewAtk, int NewDef, int NewCritical)
+ACharacter::ACharacter(string NewName, const FUnitStat& NewStat)
 {
     Name = NewName;
-    Hp = NewHp;
-    Atk = NewAtk;
-    Def = NewDef;
-    Critical = NewCritical;
+    Stat = NewStat;
 
-    cout << "ACharacter 생성됨: " << Name << " (HP: " << Hp << ")" << endl;
+    cout << "ACharacter 생성됨: " << Name << " (HP: " << Stat.Hp << ")" << endl;
 }
 
 ACharacter::~ACharacter()
@@ -34,61 +31,55 @@ int GetRandomInt()
 
 void ACharacter::Attack(ACharacter* Target)
 {
-    //변수명 코딩 스타일 PascalCase
-    int rand = GetRandomInt();
-
+    int Rand = GetRandomInt();
+    int Damage = Stat.Atk;
     cout << Name << "가 공격합니다." << endl;
     
-    if (rand < Critical)
+    if (Rand < Stat.Critical)
     {
         //static_cast<> 캐스팅 찾아보세요.
-        int CriticalAtk = Atk * 1.5;
-        Target->TakeDamage(CriticalAtk);
+        int CriticalAtk = Stat.Atk * 1.5;
+        Damage = CriticalAtk;
     }
-    else
-    {
-        Target->TakeDamage(Atk);
-    }
-    
-    //if else 바깥에서 takedamage 한번만 호출 가능합니다.
-    //지역변수 하나를 정의해서 거기에 계산을 하는 방식.
+
+    Target->TakeDamage(Damage);
 }
 
 void ACharacter::TakeDamage(int DamageAmount)
 {
-    int Damage = DamageAmount - Def;
+    int Damage = DamageAmount - Stat.Def;
 
-    //{ } if문 사용시에 꼭 넣읍시다.
     if (Damage < 0)
+    {
         Damage = 0;
+    }
 
-    Hp -= Damage;
+    Stat.Hp -= Damage;
 
-    if (Hp < 0)
-        Hp = 0;
+    if (Stat.Hp < 0)
+    {
+        Stat.Hp = 0;
+    }
 
     cout << Name << "가 " << Damage << "의 피해를 입었습니다." << endl;
-    cout << "  -> 남은 체력: " << Hp << endl;
+    cout << "  -> 남은 체력: " << Stat.Hp << endl;
 }
 
 int ACharacter::GetHp()
 {
-    return Hp;
+    return Stat.Hp;
 }
 
-bool ACharacter::bIsDead()
+bool ACharacter::IsDead()
 {
-    if (Hp <= 0)
+    if (Stat.Hp <= 0)
     {
         return true;
-    } //else 제거 가능합니다.
-    else
-    {
-        return false;
     }
+    return false;
 }
 
 int ACharacter::GetAtk()
 {
-    return Atk;
+    return Stat.Atk;
 }

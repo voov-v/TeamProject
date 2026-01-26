@@ -5,20 +5,24 @@
 
 using namespace std;
 
+struct FUnitStat
+{
+    int Hp;
+    int Atk;
+    int Def;
+    int Critical;
+};
 
 class ACharacter
 {
 public:
-    ACharacter(string NewName, int NewHp, int NewAtk, int NewDef, int NewCritical);
+    ACharacter(string NewName, const FUnitStat& NewStat);
 
     ~ACharacter();
 
 protected:
     string Name;
-    int Hp;
-    int Atk;
-    int Def;
-    int Critical;
+    FUnitStat Stat;
 
 public:
     void Attack(ACharacter* Target);
@@ -27,8 +31,7 @@ public:
 
     int GetHp();
 
-    //bIsDead < b는 변수에만 해당되는 코딩스타일 입니다.
-    bool bIsDead();
+    bool IsDead();
 
     int GetAtk();
 
