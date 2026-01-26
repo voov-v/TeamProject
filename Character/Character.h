@@ -16,7 +16,7 @@ struct FUnitStat
 class ACharacter
 {
 public:
-    ACharacter(string NewName, const FUnitStat& NewStat);
+    ACharacter(const string NewName, const FUnitStat& NewStat);
 
     ~ACharacter();
 
