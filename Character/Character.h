@@ -16,8 +16,9 @@ struct FUnitStat
 class ACharacter
 {
 public:
-    ACharacter(const string NewName, const FUnitStat& NewStat);
-
+    //int, long, 포인터 4~8
+    //클래스, 구조체 -> 포인터, 참조자
+    ACharacter(const string& NewName, const FUnitStat& NewStat);
     ~ACharacter();
 
 protected:
@@ -25,14 +26,14 @@ protected:
     FUnitStat Stat;
 
 public:
+    // getters
+    int GetHp() { return Stat.Hp; }
+    bool IsDead() { return Stat.Hp <= 0; }
+    int GetAtk() { return Stat.Atk; }
+    
     void Attack(ACharacter* Target);
-
     void TakeDamage(int DamageAmount);
 
-    int GetHp();
-
-    bool IsDead();
-
-    int GetAtk();
-
+private:
+    int GetRandomInt();
 };
