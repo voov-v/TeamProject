@@ -29,7 +29,7 @@ public:
     bool IsDead() { return Stat.Hp <= 0; }
     int GetAtk() { return Stat.Atk; }
 
-    void Attack(ACharacter* Target);
+    virtual void Attack(ACharacter* Target);
     void TakeDamage(int DamageAmount);
 
 private:
