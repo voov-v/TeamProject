@@ -5,6 +5,9 @@ ACharacter::ACharacter(const string& NewName, const FUnitStat& NewStat)
     Name = NewName;
     Stat = NewStat;
 
+    Stat.Hp = Stat.MaxHp;
+    Stat.Mp = Stat.MaxMp;
+
     cout << "ACharacter 생성됨: " << Name << " (HP: " << Stat.Hp << ")" << endl;
 }   
 
