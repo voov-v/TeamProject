@@ -20,9 +20,17 @@ bool APlayer::UseItem()
     return true;
 }
 
-void APlayer::Attack(ACharacter* Target)
+FDamageResult APlayer::Attack(ACharacter* Target)
 {
-    cout << Name << "가 점프 공격합니다." << endl;
+    FDamageResult result = ACharacter::Attack(Target);
+    string AttackMessage = "이(가) 베기 공격을 합니다.";
+    if (result.bCritical)
+    {
+        AttackMessage = "이(가) 찌르기 공격을 합니다.";
+    }
 
-    ACharacter::Attack(Target);
+    cout << Name << AttackMessage << " 데미지: " << result.Damage << endl;
+    cout << Target->GetName() << " HP: " << Target->GetHp() << endl;
+
+    return result;
 }

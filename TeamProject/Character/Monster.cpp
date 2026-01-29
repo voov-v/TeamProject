@@ -10,9 +10,17 @@ AMonster::~AMonster()
 {
 }
 
-void AMonster::Attack(ACharacter* Target)
+FDamageResult AMonster::Attack(ACharacter* Target)
 {
-    cout << Name << "가 박치기 공격합니다." << endl;
+    FDamageResult result = ACharacter::Attack(Target);
+    string AttackMessage = "이(가) 박치기 공격을 합니다.";
+    if (result.bCritical)
+    {
+        AttackMessage = "이(가) 몽둥이 공격을 합니다.";
+    }
+    
+    cout << Name << AttackMessage << " 데미지: " << result.Damage << endl;
+    cout << Target->GetName() << " HP: " << Target->GetHp() << endl;
 
-    ACharacter::Attack(Target);
+    return result;
 }

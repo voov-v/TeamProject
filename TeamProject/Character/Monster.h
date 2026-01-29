@@ -8,6 +8,6 @@ public:
     AMonster(const string& NewName, const FUnitStat& NewStat);
     ~AMonster() override;
 
-    void Attack(ACharacter* Target) override;
+    FDamageResult Attack(ACharacter* Target) override;
 };
 
