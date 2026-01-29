@@ -12,7 +12,7 @@ AMonster::~AMonster()
 
 void AMonster::Attack(ACharacter* Target)
 {
-    cout << "몬스터 공격" << endl;
+    cout << Name << "가 박치기 공격합니다." << endl;
 
-    Target->TakeDamage(Stat.Atk);
+    ACharacter::Attack(Target);
 }

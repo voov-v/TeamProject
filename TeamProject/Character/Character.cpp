@@ -17,7 +17,6 @@ void ACharacter::Attack(ACharacter* Target)
 {
     int Rand = GetRandomInt();
     int Damage = Stat.Atk;
-    cout << Name << "가 공격합니다." << endl;
     
     if (Rand < Stat.Critical)
     {

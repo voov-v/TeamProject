@@ -19,3 +19,10 @@ bool APlayer::UseItem()
 {
     return true;
 }
+
+void APlayer::Attack(ACharacter* Target)
+{
+    cout << Name << "가 점프 공격합니다." << endl;
+
+    ACharacter::Attack(Target);
+}

@@ -15,4 +15,5 @@ protected:
 public:
 	void LevelUp();
 	bool UseItem();
+	void Attack(ACharacter* Target) override;
 };
