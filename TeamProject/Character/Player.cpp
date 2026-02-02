@@ -24,13 +24,33 @@ FDamageResult APlayer::Attack(ACharacter* Target)
 {
     FDamageResult result = ACharacter::Attack(Target);
     string AttackMessage = "이(가) 베기 공격을 합니다.";
+    
     if (result.bCritical)
     {
         AttackMessage = "이(가) 찌르기 공격을 합니다.";
     }
 
-    cout << Name << AttackMessage << " 데미지: " << result.Damage << endl;
-    cout << Target->GetName() << " HP: " << Target->GetHp() << endl;
-
+    result.PrintMessage(AttackMessage);
     return result;
+}
+
+void APlayer::UseSkill(ACharacter* Target)
+{
+    if (Stat.Mp < 10) 
+    {
+        return; 
+    }
+
+    Stat.Mp -= 10;
+    int SkillDamage = Stat.Atk * 2;
+    int FinalDamage = Target->TakeDamage(SkillDamage);
+
+    FDamageResult result;
+    result.Attacker = this;
+    result.Target = Target;
+    result.Damage = FinalDamage;
+    result.bCritical = false;
+    string AttackMessage = "강하게 찌르기";
+
+    result.PrintMessage(AttackMessage);
 }

@@ -10,7 +10,8 @@ int main()
 
     cout << "===  데스매치 시작!  ===" << endl;
     Sleep(1000);
-
+    
+    Monster->UseSkill(Player);
 
     while (!Player->IsDead()&& !Monster->IsDead())
     {

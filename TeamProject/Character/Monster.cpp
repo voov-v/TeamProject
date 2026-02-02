@@ -19,8 +19,28 @@ FDamageResult AMonster::Attack(ACharacter* Target)
         AttackMessage = "이(가) 몽둥이 공격을 합니다.";
     }
     
-    cout << Name << AttackMessage << " 데미지: " << result.Damage << endl;
-    cout << Target->GetName() << " HP: " << Target->GetHp() << endl;
-
+    result.PrintMessage(AttackMessage);
     return result;
+}
+
+void AMonster::UseSkill(ACharacter* Target)
+{
+    if (Stat.Mp < 10) 
+    {
+        return;
+    }
+
+    Stat.Mp -= 10;
+    int FinalDamage = Target->TakeDamage(Stat.Atk);
+    Stat.Hp += FinalDamage;
+    Stat.Hp = std::min(Stat.Hp, Stat.MaxHp);
+
+    FDamageResult result;
+    result.Attacker = this;
+    result.Target = Target;
+    result.Damage = FinalDamage;
+    result.bCritical = false;
+    string AttackMessage = "피 회복";
+    
+    result.PrintMessage(AttackMessage);
 }

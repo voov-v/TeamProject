@@ -1,5 +1,16 @@
 ﻿#include "Character.h"
 
+void FDamageResult::PrintMessage(const string& AttackMessage)
+{
+    cout << "-------------------------------------------------" << endl;
+    Attacker->PrintName();
+    cout << AttackMessage << '\n';
+
+    Target->PrintName();
+    cout << "'받은 데미지': " << Damage << " -> '남은 HP': " << Target->GetHp() << endl;
+    cout << "-------------------------------------------------" << endl;
+}
+
 ACharacter::ACharacter(const string& NewName, const FUnitStat& NewStat)
 {
     Name = NewName;
@@ -27,6 +38,8 @@ FDamageResult ACharacter::Attack(ACharacter* Target)
 
     int FinalDamage = Target->TakeDamage(Damage);
     FDamageResult result;
+    result.Attacker = this;
+    result.Target = Target;
     result.Damage = FinalDamage;
     result.bCritical = bCritical;
     return result;
@@ -49,4 +62,21 @@ int ACharacter::GetRandomInt()
     static std::mt19937 gen(rd());
     std::uniform_int_distribution<int> dis(0, 99);
     return dis(gen);
+}
+
+void ACharacter::PrintName()
+{
+    cout << "[" << Name << "] ";
+}
+
+void ACharacter::Heal(int amount)
+{
+    int PrevHp = Stat.Hp;
+    Stat.Hp += amount;
+    Stat.Hp = std::min(Stat.MaxHp, Stat.Hp);
+
+    int ActualHeal = Stat.Hp - PrevHp;
+
+    PrintName();
+    cout << ActualHeal << " HP를 회복했습니다...!" << endl;
 }

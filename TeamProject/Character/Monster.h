@@ -9,5 +9,5 @@ public:
     ~AMonster() override;
 
     FDamageResult Attack(ACharacter* Target) override;
+    void UseSkill(ACharacter* Target) override;
 };
-

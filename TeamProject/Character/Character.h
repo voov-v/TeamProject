@@ -6,6 +6,8 @@
 
 using namespace std;
 
+class ACharacter;
+
 struct FUnitStat
 {
     int MaxHp;
@@ -36,6 +38,9 @@ struct FDamageResult
 {
     int Damage;
     bool bCritical;
+    ACharacter* Attacker;
+    ACharacter* Target;
+    void PrintMessage(const string& AttackMessage);
 };
 
 class ACharacter
@@ -53,9 +58,13 @@ public:
     bool IsDead() { return Stat.Hp <= 0; }
     int GetAtk() { return Stat.Atk; }
     string GetName() { return Name; }
+    int GetMaxHp() const { return Stat.MaxHp; }
 
     virtual FDamageResult Attack(ACharacter* Target);
+    virtual void UseSkill(ACharacter* Target) = 0;
     int TakeDamage(int DamageAmount);
+    void PrintName();
+    void Heal(int amount);
 
 private:
     int GetRandomInt();
