@@ -65,6 +65,7 @@ public:
     int TakeDamage(int DamageAmount);
     void PrintName();
     void Heal(int amount);
+    void PlayTurn(ACharacter* Target);
 
 private:
     int GetRandomInt();

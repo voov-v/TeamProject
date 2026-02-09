@@ -36,12 +36,12 @@ FDamageResult APlayer::Attack(ACharacter* Target)
 
 void APlayer::UseSkill(ACharacter* Target)
 {
-    if (Stat.Mp < 10) 
+    /*if (Stat.Mp < 10) 
     {
         return; 
     }
 
-    Stat.Mp -= 10;
+    Stat.Mp -= 10;*/
     int SkillDamage = Stat.Atk * 2;
     int FinalDamage = Target->TakeDamage(SkillDamage);
 

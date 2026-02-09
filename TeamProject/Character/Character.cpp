@@ -20,7 +20,7 @@ ACharacter::ACharacter(const string& NewName, const FUnitStat& NewStat)
     Stat.Mp = Stat.MaxMp;
 
     cout << "ACharacter 생성됨: " << Name << " (HP: " << Stat.Hp << ")" << endl;
-}   
+}
 
 ACharacter::~ACharacter()
 {
@@ -79,4 +79,24 @@ void ACharacter::Heal(int amount)
 
     PrintName();
     cout << ActualHeal << " HP를 회복했습니다...!" << endl;
+}
+
+void ACharacter::PlayTurn(ACharacter* Target)
+{
+    const int AttackRate = 70;
+    const int SkillMp = 10;
+
+    if (GetRandomInt() < AttackRate)
+    {
+        Attack(Target);
+        return;
+    }
+
+    if (Stat.Mp >= SkillMp)
+    {
+        UseSkill(Target);
+        Stat.Mp -= SkillMp;
+        return;
+    }
+    Attack(Target);
 }

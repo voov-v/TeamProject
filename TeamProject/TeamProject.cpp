@@ -3,19 +3,23 @@
 #include "Character/Monster.h"
 #include <Windows.h>
 
+void WaitForPlayInput()
+{
+    system("pause");
+    cout << endl;
+}
+
 int main()
 {
     APlayer* Player = new APlayer("나의 용사", { 200, 50, 15, 7, 10 });
     AMonster* Monster = new AMonster("무서운 오크", { 100, 30, 10, 5, 10 });
 
     cout << "===  데스매치 시작!  ===" << endl;
-    Sleep(1000);
-    
-    Monster->UseSkill(Player);
+    WaitForPlayInput();
 
     while (!Player->IsDead()&& !Monster->IsDead())
     {
-        Player->Attack(Monster);
+        Player->PlayTurn(Monster);
 
         if (Monster->IsDead())
         {
@@ -23,10 +27,9 @@ int main()
             break;
         }
 
-        Sleep(500);
+        WaitForPlayInput();
 
-
-        Monster->Attack(Player);
+        Monster->PlayTurn(Player);
 
         if (Player->IsDead())
         {
@@ -34,7 +37,7 @@ int main()
             break;
         }
 
-        Sleep(1000);
+        WaitForPlayInput();
     }
 
     delete Player;
