@@ -55,10 +55,12 @@ protected:
 
 public:
     int GetHp() { return Stat.Hp; }
+    int GetMp() { return Stat.Mp; }
     bool IsDead() { return Stat.Hp <= 0; }
     int GetAtk() { return Stat.Atk; }
     string GetName() { return Name; }
     int GetMaxHp() const { return Stat.MaxHp; }
+    int GetMaxMp() const { return Stat.MaxMp; }
 
     virtual FDamageResult Attack(ACharacter* Target);
     virtual void UseSkill(ACharacter* Target) = 0;
@@ -66,6 +68,7 @@ public:
     void PrintName();
     void Heal(int amount);
     void PlayTurn(ACharacter* Target);
+    void ShowStat();
 
 private:
     int GetRandomInt();

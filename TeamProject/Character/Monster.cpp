@@ -30,7 +30,7 @@ void AMonster::UseSkill(ACharacter* Target)
         return;
     }
 
-    Stat.Mp -= 10;
+    
     int FinalDamage = Target->TakeDamage(Stat.Atk);
     Stat.Hp += FinalDamage;
     Stat.Hp = std::min(Stat.Hp, Stat.MaxHp);

@@ -100,3 +100,8 @@ void ACharacter::PlayTurn(ACharacter* Target)
     }
     Attack(Target);
 }
+
+void ACharacter::ShowStat()
+{
+    cout << "[" << Name << "] HP: " << Stat.Hp << " / " << Stat.MaxHp << " | MP: " << Stat.Mp << " / " << Stat.MaxMp << endl;
+}
