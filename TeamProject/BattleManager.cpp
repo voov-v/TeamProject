@@ -13,7 +13,7 @@ void BattleManager::RunBattle(ACharacter* Player, ACharacter* Monster)
     cout << "===  데스매치 시작!  ===" << endl;
     WaitForPlayInput();
 
-    while (true)
+    while (!Player->IsDead() && !Monster->IsDead())
     {
         if (BattleTurn(Player, Monster) == true)
         {
@@ -34,13 +34,14 @@ void BattleManager::WaitForPlayInput()
 
 bool BattleManager::BattleTurn(ACharacter* Attacker, ACharacter* Defender)
 {
+    cout << "[System] " << Attacker->GetName() << "의 턴입니다\n";
     Attacker->PlayTurn(Defender);
     Attacker->ShowStat();
     Defender->ShowStat();
     WaitForPlayInput();
     if (Defender->IsDead())
     {
-        cout << "죽음" << endl;
+        cout << "[System] " << Defender->GetName() << " 사망...";
     }
     return Defender->IsDead();
 }
