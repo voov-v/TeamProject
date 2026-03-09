@@ -47,6 +47,18 @@ FDamageResult ACharacter::Attack(ACharacter* Target)
 
 int ACharacter::TakeDamage(int DamageAmount)
 {
+    if (Stat.Shield > 0)
+    {
+        if (Stat.Shield > DamageAmount)
+        {
+            Stat.Shield -= DamageAmount;
+        }
+        else
+        {
+            DamageAmount -= Stat.Shield;
+        }
+    }
+
     int Damage = DamageAmount - Stat.Def;
     Damage = std::max(Damage, 0);
 
@@ -79,6 +91,14 @@ void ACharacter::Heal(int amount)
 
     PrintName();
     cout << ActualHeal << " HP를 회복했습니다...!" << endl;
+}
+
+void ACharacter::Shield(int amount)
+{
+    Stat.Shield += amount;
+
+    PrintName();
+    cout << Stat.Shield << "Shield를 얻었습니다." << endl;
 }
 
 void ACharacter::PlayTurn(ACharacter* Target)

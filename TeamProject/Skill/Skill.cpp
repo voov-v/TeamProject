@@ -1,6 +1,8 @@
 ﻿#include "Skill.h"
 
-Skill::Skill(ACharacter* owner)
+USkill::USkill(ACharacter* owner)
 {
     Owner = owner;
 }
+
+

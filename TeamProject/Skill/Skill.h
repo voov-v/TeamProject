@@ -2,10 +2,10 @@
 
 class ACharacter;
 
-class Skill
+class USkill
 {
 public:
-    Skill(ACharacter* owner);
+    USkill(ACharacter* owner);
 
     virtual void Play(ACharacter* Target) = 0;
 

@@ -15,6 +15,7 @@ struct FUnitStat
     int Atk;
     int Def;
     int Critical;
+    int Shield;
 
     int Hp = 0;
     int Mp = 0;
@@ -58,6 +59,7 @@ public:
     int GetMp() { return Stat.Mp; }
     bool IsDead() { return Stat.Hp <= 0; }
     int GetAtk() { return Stat.Atk; }
+    int GetCritical() { return Stat.Critical; }
     string GetName() { return Name; }
     int GetMaxHp() const { return Stat.MaxHp; }
     int GetMaxMp() const { return Stat.MaxMp; }
@@ -67,10 +69,9 @@ public:
     int TakeDamage(int DamageAmount);
     void PrintName();
     void Heal(int amount);
+    void Shield(int amount);
     void PlayTurn(ACharacter* Target);
     void ShowStat();
-
-private:
     int GetRandomInt();
-
+    
 };

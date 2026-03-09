@@ -25,12 +25,6 @@ FDamageResult AMonster::Attack(ACharacter* Target)
 
 void AMonster::UseSkill(ACharacter* Target)
 {
-    if (Stat.Mp < 10) 
-    {
-        return;
-    }
-
-    
     int FinalDamage = Target->TakeDamage(Stat.Atk);
     Stat.Hp += FinalDamage;
     Stat.Hp = std::min(Stat.Hp, Stat.MaxHp);
