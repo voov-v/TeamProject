@@ -6,5 +6,5 @@ class UMonsterDrainSkill : public USkill
 public:
     UMonsterDrainSkill(ACharacter* owner);
 
-    virtual void Play(ACharacter* Target) override;
+    virtual void OnPlay(ACharacter* Target) override;
 };

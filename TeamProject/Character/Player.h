@@ -15,6 +15,7 @@ protected:
 public:
 	void LevelUp();
 	bool UseItem();
-	FDamageResult Attack(ACharacter* Target) override;
-	void UseSkill(ACharacter* Target) override;
+	//FDamageResult Attack(ACharacter* Target) override;
+	//void UseSkill(ACharacter* Target) override;
+	void PlayTurn(ACharacter* Target) override;
 };

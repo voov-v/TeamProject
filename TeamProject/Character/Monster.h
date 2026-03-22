@@ -8,6 +8,7 @@ public:
     AMonster(const string& NewName, const FUnitStat& NewStat);
     ~AMonster() override;
 
-    FDamageResult Attack(ACharacter* Target) override;
-    void UseSkill(ACharacter* Target) override;
+    //FDamageResult Attack(ACharacter* Target) override;
+    //void UseSkill(ACharacter* Target) override;
+    void PlayTurn(ACharacter* Target) override;
 };

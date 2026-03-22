@@ -6,6 +6,6 @@ class UMonsterAttackSkill : public USkill
 public:
     UMonsterAttackSkill(ACharacter* owner);
 
-    virtual void Play(ACharacter* Target) override;
+    virtual void OnPlay(ACharacter* Target) override;
 };
 

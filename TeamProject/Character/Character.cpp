@@ -27,23 +27,23 @@ ACharacter::~ACharacter()
     cout << "ACharacter 소멸됨" << endl;
 }
 
-FDamageResult ACharacter::Attack(ACharacter* Target)
-{
-    int Damage = Stat.Atk;
-    bool bCritical = GetRandomInt() < Stat.Critical;
-    if (bCritical)
-    {
-        Damage = static_cast<int>(Damage * 1.5f);
-    }
-
-    int FinalDamage = Target->TakeDamage(Damage);
-    FDamageResult result;
-    result.Attacker = this;
-    result.Target = Target;
-    result.Damage = FinalDamage;
-    result.bCritical = bCritical;
-    return result;
-}
+//FDamageResult ACharacter::Attack(ACharacter* Target)
+//{
+//    int Damage = Stat.Atk;
+//    bool bCritical = GetRandomInt() < Stat.Critical;
+//    if (bCritical)
+//    {
+//        Damage = static_cast<int>(Damage * 1.5f);
+//    }
+//
+//    int FinalDamage = Target->TakeDamage(Damage);
+//    FDamageResult result;
+//    result.Attacker = this;
+//    result.Target = Target;
+//    result.Damage = FinalDamage;
+//    result.bCritical = bCritical;
+//    return result;
+//}
 
 int ACharacter::TakeDamage(int DamageAmount)
 {
@@ -52,6 +52,7 @@ int ACharacter::TakeDamage(int DamageAmount)
         if (Stat.Shield > DamageAmount)
         {
             Stat.Shield -= DamageAmount;
+            return 0;
         }
         else
         {
@@ -68,11 +69,11 @@ int ACharacter::TakeDamage(int DamageAmount)
     return Damage;
 }
 
-int ACharacter::GetRandomInt()
+int ACharacter::GetRandomInt(int Max)
 {
     static std::random_device rd;
     static std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> dis(0, 99);
+    std::uniform_int_distribution<int> dis(0, Max - 1);
     return dis(gen);
 }
 
@@ -98,22 +99,37 @@ void ACharacter::Shield(int amount)
     Stat.Shield += amount;
 
     PrintName();
-    cout << Stat.Shield << "Shield를 얻었습니다." << endl;
+    cout << Stat.Shield << " 쉴드를 얻었습니다." << endl;
 }
 
 void ACharacter::PlayTurn(ACharacter* Target)
 {
-    if (GetRandomInt() < 50)
-    {
-        Attack(Target);
-    }
-    else
-    {
-        UseSkill(Target);
-    }
+    
 }
 
 void ACharacter::ShowStat()
 {
     cout << "[" << Name << "] HP: " << Stat.Hp << " / " << Stat.MaxHp << " | MP: " << Stat.Mp << " / " << Stat.MaxMp << endl;
+}
+
+bool ACharacter::HasEnoughMp(int cost)
+{
+    if (cost < 0)
+    {
+        return false;
+    }
+
+    return Stat.Mp >= cost;
+}
+
+void ACharacter::ConsumeMp(int cost)
+{
+    if (cost < 0)
+    {
+        return;
+    }
+
+    Stat.Mp -= cost;
+
+    Stat.Mp = std::max(Stat.Mp, 0);
 }

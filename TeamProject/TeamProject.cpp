@@ -10,8 +10,8 @@ int main()
 {
     auto BM = make_unique<BattleManager>();
 
-    FUnitStat PlayerStat(200, 20, 15, 7, 10);
-    FUnitStat MonsterStat(220, 50, 10, 5, 10);
+    FUnitStat PlayerStat(200, 50, 15, 7, 10);
+    FUnitStat MonsterStat(220, 50, 15, 5, 10);
 
     unique_ptr<ACharacter> Player =  make_unique<APlayer>("나의 용사", PlayerStat);
     unique_ptr<ACharacter> Monster = make_unique<AMonster>("무서운 오크", MonsterStat);

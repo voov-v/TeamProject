@@ -2,11 +2,12 @@
 #include "../Character/Character.h"
 
 UPlayerAttackSkill::UPlayerAttackSkill(ACharacter* owner)
-    : USkill(owner)
+    : USkill(owner, "일반 공격", 0)
 {
+
 }
 
-void UPlayerAttackSkill::Play(ACharacter* Target)
+void UPlayerAttackSkill::OnPlay(ACharacter* Target)
 {
     int Damage = Owner->GetAtk();
     bool bCritical = Owner->GetRandomInt() < Owner->GetCritical();
